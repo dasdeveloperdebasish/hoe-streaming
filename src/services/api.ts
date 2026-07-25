@@ -8,6 +8,13 @@ const LATENCY_MS = 900;
 // Roughly 1 in 12 calls fail, so the error state is reachable in a real run.
 const FAILURE_RATE = 0.08;
 
+export type Page<T> = {
+  items: T[];
+  nextPage: number | null;
+};
+
+const PAGE_SIZE = 8;
+
 function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -35,25 +42,23 @@ export async function fetchContentById(id: string): Promise<ContentDetail> {
   return item;
 }
 
-export async function fetchContentByIds(
-  ids: string[],
-): Promise<ContentDetail[]> {
-  await wait(LATENCY_MS);
-  maybeFail();
-
-  return ids
-    .map((id) => CONTENT[id])
-    .filter((item): item is ContentDetail => item !== undefined);
-}
-
-export async function searchContent(query: string): Promise<ContentDetail[]> {
-  await wait(500); // shorter delay — search should feel snappy
+export async function searchContent(
+  query: string,
+  page: number,
+): Promise<Page<ContentDetail>> {
+  await wait(500);
   const q = query.trim().toLowerCase();
-  if (q.length === 0) return [];
+  if (q.length === 0) return { items: [], nextPage: null };
 
-  return Object.values(CONTENT).filter(
+  const all = Object.values(CONTENT).filter(
     (item) =>
       item.title.toLowerCase().includes(q) ||
       item.genres.some((g) => g.toLowerCase().includes(q)),
   );
+
+  const start = page * PAGE_SIZE;
+  const items = all.slice(start, start + PAGE_SIZE);
+  const nextPage = start + PAGE_SIZE < all.length ? page + 1 : null;
+
+  return { items, nextPage };
 }

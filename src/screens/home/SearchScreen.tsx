@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { FlatList, TextInput, View } from "react-native";
+import { ActivityIndicator, FlatList, TextInput, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -16,7 +16,12 @@ export default function SearchScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<Nav>();
   const [query, setQuery] = useState("");
-  const { data, isFetching } = useSearch(query);
+
+  const { data, isFetching, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useSearch(query);
+
+  // Flatten all loaded pages into a single list.
+  const results = data?.pages.flatMap((p) => p.items) ?? [];
 
   const openDetail = useCallback(
     (item: Content) =>
@@ -31,9 +36,12 @@ export default function SearchScreen() {
     [openDetail],
   );
 
+  const loadMore = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) fetchNextPage();
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
   const trimmed = query.trim();
-  const showEmpty =
-    trimmed.length > 0 && !isFetching && (data?.length ?? 0) === 0;
+  const showEmpty = trimmed.length > 0 && !isFetching && results.length === 0;
 
   return (
     <View className="flex-1 bg-bg" style={{ paddingTop: insets.top }}>
@@ -61,13 +69,22 @@ export default function SearchScreen() {
         />
       ) : (
         <FlatList
-          data={data ?? []}
+          data={results}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
           keyboardShouldPersistTaps="handled"
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
           initialNumToRender={8}
           windowSize={5}
           removeClippedSubviews
+          ListFooterComponent={
+            isFetchingNextPage ? (
+              <View className="py-4">
+                <ActivityIndicator color={COLORS.accent} />
+              </View>
+            ) : null
+          }
         />
       )}
     </View>
