@@ -11,6 +11,7 @@ export interface Content {
   backdropUrl: string;
   description: string;
   progress?: number; // 0 to 1, only for "Continue Watching"
+  videoUrl: string;
 }
 
 export interface CastMember {
