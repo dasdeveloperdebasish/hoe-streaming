@@ -37,3 +37,31 @@ because Tailwind v4 moved theme config into CSS.
   same 60fps shimmer, zero extra dependency risk.
 - Lesson: pick the simplest tool that meets the bar. Reanimated earns its place
   for gesture-driven work; a pulsing opacity does not need it.
+
+  ## Detail screen
+
+- Scroll-driven animated header: Animated.Value tracks scrollY (useNativeDriver),
+  interpolated to scale the image on pull-down and fade it on scroll-up. Native
+  thread = 60fps. RN built-in Animated, no Reanimated needed.
+- navigation.push (not navigate) for "more like this" so A->B->C drilldown works
+  and back pops one at a time.
+- Cast = plain row (3 fixed items, no virtualization). Related = FlatList Carousel
+  (variable length). Right tool per list.
+- Reuses Carousel, SectionTitle, skeleton/error components from Home. DRY.
+
+  ## Profile + Zustand
+
+- Two Zustand stores: theme (mode + toggle) and watchlist (ids + toggle + has).
+- Each store is ~10 lines, no provider/slice/reducer. This is the Redux-vs-Zustand
+  argument: two pieces of client state don't justify Redux boilerplate.
+- SettingsRow is one reusable component for both switch rows and value rows.
+- Watchlist count on profile is live — proves cross-screen Zustand state.
+
+## Search
+
+- Reuses React Query + service layer + hook pattern — near-zero new plumbing.
+  Payoff of the layered architecture.
+- Three states: empty query prompt, no-results empty state, results list.
+- searchContent has no random failure + shorter delay (search must feel snappy).
+- TODO: debounce query in production to avoid a request per keystroke.
+- keyboardShouldPersistTaps so tapping a result works with keyboard open.
