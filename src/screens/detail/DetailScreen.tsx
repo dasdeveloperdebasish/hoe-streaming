@@ -124,7 +124,15 @@ export default function DetailScreen({ route }: Props) {
           </View>
 
           <View className="flex-row gap-2 mt-2 mb-6">
-            <Pressable className="bg-accent px-6 py-2.5 rounded-lg flex-1 items-center">
+            <Pressable
+              onPress={() =>
+                navigation.push("Player", {
+                  videoUrl: data.videoUrl,
+                  title: data.title,
+                })
+              }
+              className="bg-accent px-6 py-2.5 rounded-lg flex-1 items-center"
+            >
               <Text className="text-bg text-sm font-semibold">▶ Play</Text>
             </Pressable>
             <Pressable
