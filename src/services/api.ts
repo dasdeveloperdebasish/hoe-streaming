@@ -45,3 +45,15 @@ export async function fetchContentByIds(
     .map((id) => CONTENT[id])
     .filter((item): item is ContentDetail => item !== undefined);
 }
+
+export async function searchContent(query: string): Promise<ContentDetail[]> {
+  await wait(500); // shorter delay — search should feel snappy
+  const q = query.trim().toLowerCase();
+  if (q.length === 0) return [];
+
+  return Object.values(CONTENT).filter(
+    (item) =>
+      item.title.toLowerCase().includes(q) ||
+      item.genres.some((g) => g.toLowerCase().includes(q)),
+  );
+}
