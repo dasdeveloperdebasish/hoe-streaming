@@ -1,7 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import type { RootTabParamList } from "./types";
+import { COLORS } from "@/constants/theme";
 import HomeStack from "./HomeStack";
-import SearchScreen from "@/screens/home/SearchScreen";
+import SearchStack from "./SearchStack";
 import ProfileScreen from "@/screens/profile/ProfileScreen";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -11,16 +12,16 @@ export default function RootTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#FF5A36",
-        tabBarInactiveTintColor: "#8B8B93",
+        tabBarActiveTintColor: COLORS.accent,
+        tabBarInactiveTintColor: COLORS.muted,
         tabBarStyle: {
-          backgroundColor: "#0A0A0B",
-          borderTopColor: "#26262C",
+          backgroundColor: COLORS.bg,
+          borderTopColor: COLORS.line,
         },
       }}
     >
       <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen name="Search" component={SearchStack} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

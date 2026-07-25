@@ -1,9 +1,9 @@
 import type { NavigatorScreenParams } from "@react-navigation/native";
 
-// Screens inside the Home stack, and what params each needs.
 export type HomeStackParamList = {
-  HomeFeed: undefined; // no params
-  Detail: { id: string; title: string }; // needs a content id
+  HomeFeed: undefined;
+  SearchHome: undefined;
+  Detail: { id: string; title: string };
   WebContent: { url: string; title: string };
 };
 
