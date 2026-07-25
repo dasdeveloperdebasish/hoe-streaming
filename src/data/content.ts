@@ -13,6 +13,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c01/300/450",
     "backdropUrl": "https://picsum.photos/seed/c01b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
     "description": "The Last Signal follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -52,6 +53,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c02/300/450",
     "backdropUrl": "https://picsum.photos/seed/c02b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
     "description": "Paper Cities follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -91,6 +93,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c03/300/450",
     "backdropUrl": "https://picsum.photos/seed/c03b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
     "description": "Quiet Hours follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -131,6 +134,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c04/300/450",
     "backdropUrl": "https://picsum.photos/seed/c04b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
     "description": "Ironbound follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -170,6 +174,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c05/300/450",
     "backdropUrl": "https://picsum.photos/seed/c05b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
     "description": "Deep Field follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -210,6 +215,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c06/300/450",
     "backdropUrl": "https://picsum.photos/seed/c06b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
     "description": "After the Rain follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -249,6 +255,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c07/300/450",
     "backdropUrl": "https://picsum.photos/seed/c07b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
     "description": "Hollow Season follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -289,6 +296,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c08/300/450",
     "backdropUrl": "https://picsum.photos/seed/c08b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
     "description": "Northwind follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -329,6 +337,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c09/300/450",
     "backdropUrl": "https://picsum.photos/seed/c09b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
     "description": "Glasshouse follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -368,6 +377,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c10/300/450",
     "backdropUrl": "https://picsum.photos/seed/c10b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
     "description": "Tidepool follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -407,6 +417,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c11/300/450",
     "backdropUrl": "https://picsum.photos/seed/c11b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
     "description": "Ember Road follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -447,6 +458,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c12/300/450",
     "backdropUrl": "https://picsum.photos/seed/c12b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
     "description": "Salt & Static follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -486,6 +498,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c13/300/450",
     "backdropUrl": "https://picsum.photos/seed/c13b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
     "description": "The Long Wait follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -526,6 +539,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c14/300/450",
     "backdropUrl": "https://picsum.photos/seed/c14b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
     "description": "Understory follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -565,6 +579,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c15/300/450",
     "backdropUrl": "https://picsum.photos/seed/c15b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
     "description": "Lantern follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -605,6 +620,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c16/300/450",
     "backdropUrl": "https://picsum.photos/seed/c16b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
     "description": "Cold Harbor follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -645,6 +661,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c17/300/450",
     "backdropUrl": "https://picsum.photos/seed/c17b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
     "description": "Margin follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -684,6 +701,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c18/300/450",
     "backdropUrl": "https://picsum.photos/seed/c18b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
     "description": "Featherweight follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -723,6 +741,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c19/300/450",
     "backdropUrl": "https://picsum.photos/seed/c19b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
     "description": "Drift follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -763,6 +782,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c20/300/450",
     "backdropUrl": "https://picsum.photos/seed/c20b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
     "description": "Overgrown follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -802,6 +822,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c21/300/450",
     "backdropUrl": "https://picsum.photos/seed/c21b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
     "description": "Signal Fire follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -842,6 +863,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c22/300/450",
     "backdropUrl": "https://picsum.photos/seed/c22b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
     "description": "Lowtide follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -881,6 +903,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c23/300/450",
     "backdropUrl": "https://picsum.photos/seed/c23b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
     "description": "Backlot follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -921,6 +944,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c24/300/450",
     "backdropUrl": "https://picsum.photos/seed/c24b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
     "description": "Meridian follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -961,6 +985,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c25/300/450",
     "backdropUrl": "https://picsum.photos/seed/c25b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
     "description": "Nightschool follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -1000,6 +1025,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c26/300/450",
     "backdropUrl": "https://picsum.photos/seed/c26b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
     "description": "Foxglove follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -1039,6 +1065,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c27/300/450",
     "backdropUrl": "https://picsum.photos/seed/c27b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
     "description": "The Undertow follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -1079,6 +1106,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c28/300/450",
     "backdropUrl": "https://picsum.photos/seed/c28b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
     "description": "Palewood follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -1118,6 +1146,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c29/300/450",
     "backdropUrl": "https://picsum.photos/seed/c29b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
     "description": "Runaway Sun follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {
@@ -1158,6 +1187,7 @@ export const CONTENT: Record<string, ContentDetail> = {
     ],
     "posterUrl": "https://picsum.photos/seed/c30/300/450",
     "backdropUrl": "https://picsum.photos/seed/c30b/800/450",
+    "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
     "description": "Blueprint follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.",
     "cast": [
       {

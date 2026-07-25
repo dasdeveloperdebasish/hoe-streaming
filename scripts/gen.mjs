@@ -12,6 +12,13 @@ const genres = [
 ];
 const ratings = ["U/A 7+", "U/A 13+", "U/A 16+", "A"];
 const durations = ["48m", "1h 52m", "2 seasons", "4 seasons", "6 episodes"];
+const videos = [
+  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_5MB.mp4",
+  "https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_5MB.mp4",
+  "https://test-videos.co.uk/vids/sintel/mp4/h264/1080/Sintel_1080_10s_5MB.mp4",
+  "https://test-videos.co.uk/vids/tearsofsteel/mp4/h264/1080/Tears_of_Steel_1080_10s_5MB.mp4",
+  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_10MB.mp4",
+];
 const titles = [
   "The Last Signal",
   "Paper Cities",
@@ -58,6 +65,7 @@ titles.forEach((title, i) => {
     genres: g,
     posterUrl: `https://picsum.photos/seed/${id}/300/450`,
     backdropUrl: `https://picsum.photos/seed/${id}b/800/450`,
+    videoUrl: videos[i % videos.length],
     description: `${title} follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.`,
     cast: [1, 2, 3].map((n) => ({
       id: `${id}p${n}`,
