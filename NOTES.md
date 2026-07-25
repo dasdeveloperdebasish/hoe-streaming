@@ -28,3 +28,12 @@ because Tailwind v4 moved theme config into CSS.
   and the tab bar stays visible (Netflix/Hotstar pattern).
 - headerShown:false on Detail — it gets a custom animated header later.
 - Provider order: QueryClient > SafeArea > NavigationContainer > tabs.
+
+## Skeleton / animation choice
+
+- Started with react-native-reanimated but it needs extra config on Expo SDK 57
+  (RN 0.82 new architecture). Rather than fight it near deadline, used RN's
+  built-in Animated API with useNativeDriver:true — runs on native thread,
+  same 60fps shimmer, zero extra dependency risk.
+- Lesson: pick the simplest tool that meets the bar. Reanimated earns its place
+  for gesture-driven work; a pulsing opacity does not need it.
