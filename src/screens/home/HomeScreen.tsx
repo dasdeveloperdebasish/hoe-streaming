@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, RefreshControl, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useHomeFeed } from "@/hooks/useHomeFeed";
@@ -12,6 +12,7 @@ import { Chip } from "@/components/ui/Chip";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { HomeSkeleton } from "@/components/feedback/HomeSkeleton";
 import { ErrorState } from "@/components/feedback/ErrorState";
+import { COLORS } from "@/constants/theme";
 
 type Nav = NativeStackNavigationProp<HomeStackParamList, "HomeFeed">;
 
@@ -23,7 +24,7 @@ function resolve(ids: string[]): Content[] {
 
 export default function HomeScreen() {
   const navigation = useNavigation<Nav>();
-  const { data, isLoading, isError, refetch } = useHomeFeed();
+  const { data, isLoading, isError, refetch, isRefetching } = useHomeFeed();
   const [activeCat, setActiveCat] = useState("all");
 
   const openDetail = useCallback(
@@ -59,6 +60,14 @@ export default function HomeScreen() {
         keyExtractor={(s) => s.id}
         renderItem={renderSection}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            tintColor={COLORS.accent}
+            colors={[COLORS.accent]}
+          />
+        }
         ListHeaderComponent={
           <>
             <HeroBanner
