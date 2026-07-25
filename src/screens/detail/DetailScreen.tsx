@@ -127,6 +127,17 @@ export default function DetailScreen({ route }: Props) {
             <Pressable className="bg-accent px-6 py-2.5 rounded-lg flex-1 items-center">
               <Text className="text-bg text-sm font-semibold">▶ Play</Text>
             </Pressable>
+            <Pressable
+              onPress={() =>
+                navigation.push("WebContent", {
+                  url: "https://en.wikipedia.org/wiki/Streaming_media",
+                  title: `About ${data.title}`,
+                })
+              }
+              className="border border-line px-4 py-2.5 rounded-lg items-center justify-center"
+            >
+              <Text className="text-ink text-sm">ⓘ More info</Text>
+            </Pressable>
             <Pressable className="border border-line px-4 py-2.5 rounded-lg items-center justify-center">
               <Text className="text-ink text-sm">+ My List</Text>
             </Pressable>
