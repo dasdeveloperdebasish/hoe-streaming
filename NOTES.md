@@ -20,3 +20,11 @@ because Tailwind v4 moved theme config into CSS.
 - Screens call hooks (useHomeFeed), hooks call services (api.ts). 3 layers.
 - retry:1 + 8% mock failure = error state reachable but not annoying.
 - enabled guard stops queries firing on empty input.
+
+## Navigation
+
+- Typed param lists (HomeStackParamList) — navigate() calls are type-checked.
+- Home tab contains a stack, not a bare screen, so Detail pushes over the tab
+  and the tab bar stays visible (Netflix/Hotstar pattern).
+- headerShown:false on Detail — it gets a custom animated header later.
+- Provider order: QueryClient > SafeArea > NavigationContainer > tabs.
