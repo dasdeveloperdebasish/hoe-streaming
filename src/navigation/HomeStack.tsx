@@ -3,6 +3,7 @@ import type { HomeStackParamList } from "./types";
 import HomeScreen from "@/screens/home/HomeScreen";
 import DetailScreen from "@/screens/detail/DetailScreen";
 import WebScreen from "@/screens/web/WebScreen";
+import PlayerScreen from "@/screens/player/PlayerScreen";
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -12,6 +13,7 @@ export default function HomeStack() {
       <Stack.Screen name="HomeFeed" component={HomeScreen} />
       <Stack.Screen name="Detail" component={DetailScreen} />
       <Stack.Screen name="WebContent" component={WebScreen} />
+      <Stack.Screen name="Player" component={PlayerScreen} />
     </Stack.Navigator>
   );
 }

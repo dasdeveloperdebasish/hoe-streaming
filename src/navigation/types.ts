@@ -5,6 +5,7 @@ export type HomeStackParamList = {
   SearchHome: undefined;
   Detail: { id: string; title: string };
   WebContent: { url: string; title: string };
+  Player: { videoUrl: string; title: string };
 };
 
 // The three bottom tabs.
