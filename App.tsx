@@ -9,11 +9,10 @@ import { PaperProvider, MD3DarkTheme } from "react-native-paper";
 import { queryClient } from "@/services/queryClient";
 import { useThemeStore } from "@/store/useThemeStore";
 import { COLORS } from "@/constants/theme";
-import RootTabs from "@/navigation/RootTabs";
+import RootNavigator from "@/navigation/RootNavigator";
 import { CONTENT } from "@/data/content";
 import { Image } from "expo-image";
 
-// Theme Paper's Material palette to match our custom dark tokens.
 const paperTheme = {
   ...MD3DarkTheme,
   colors: {
@@ -45,7 +44,7 @@ export default function App() {
         <SafeAreaProvider>
           <NavigationContainer>
             <StatusBar style={mode === "dark" ? "light" : "dark"} />
-            <RootTabs />
+            <RootNavigator />
           </NavigationContainer>
         </SafeAreaProvider>
       </PaperProvider>
