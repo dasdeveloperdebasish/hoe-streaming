@@ -8,8 +8,7 @@ import {
 } from "react-native";
 import { VideoView, useVideoPlayer } from "expo-video";
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { NativeStackScreenProps , NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import type { HomeStackParamList } from "@/navigation/types";
