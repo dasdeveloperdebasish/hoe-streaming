@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import type { Content } from "@/types/content";
 import { useWatchlistStore } from "@/store/useWatchlistStore";
 import { COLORS, HERO_HEIGHT, HERO_FADE_HEIGHT } from "@/constants/theme";
+import { STRINGS } from "@/constants/strings";
 
 type Props = { item: Content; onPress: () => void };
 
@@ -48,14 +49,18 @@ export function HeroBanner({ item, onPress }: Props) {
             onPress={onPress}
             className="bg-accent px-6 py-2.5 rounded-lg"
           >
-            <Text className="text-bg text-sm font-semibold">▶ Play</Text>
+            <Text className="text-bg text-sm font-semibold">
+              ▶ {STRINGS.play}
+            </Text>
           </Pressable>
           <Pressable
             onPress={() => toggleList(item.id)}
             className="border border-line px-4 py-2.5 rounded-lg"
           >
             <Text className="text-ink text-sm">
-              {inList ? "✓  My List" : "+  My List"}
+              <Text className="text-ink text-sm">
+                {inList ? STRINGS.inList : STRINGS.addList}
+              </Text>
             </Text>
           </Pressable>
         </View>

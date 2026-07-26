@@ -2,7 +2,10 @@ import { useCallback, useMemo } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackScreenProps , NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type {
+  NativeStackScreenProps,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useContentDetail, useRelatedContent } from "@/hooks/useContentDetail";
 import { useWatchlistStore } from "@/store/useWatchlistStore";
@@ -15,6 +18,7 @@ import { Carousel } from "@/components/ui/Carousel";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { DetailSkeleton } from "@/components/feedback/DetailSkeleton";
 import { ErrorState } from "@/components/feedback/ErrorState";
+import { STRINGS } from "@/constants/strings";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "Detail">;
 type Nav = NativeStackNavigationProp<HomeStackParamList, "Detail">;
@@ -128,7 +132,9 @@ export default function DetailScreen({ route }: Props) {
               }
               className="bg-accent px-6 py-2.5 rounded-lg flex-1 items-center"
             >
-              <Text className="text-bg text-sm font-semibold">▶ Play</Text>
+              <Text className="text-bg text-sm font-semibold">
+                ▶ {STRINGS.play}
+              </Text>
             </Pressable>
 
             <Pressable
@@ -140,7 +146,7 @@ export default function DetailScreen({ route }: Props) {
               }
               className="border border-line px-4 py-2.5 rounded-lg items-center justify-center"
             >
-              <Text className="text-ink text-sm">ⓘ Info</Text>
+              <Text className="text-ink text-sm">ⓘ {STRINGS.info}</Text>
             </Pressable>
 
             <Pressable
@@ -148,7 +154,9 @@ export default function DetailScreen({ route }: Props) {
               className="border border-line px-4 py-2.5 rounded-lg items-center justify-center"
             >
               <Text className="text-ink text-sm">
-                {inList ? "✓  List" : "+  List"}
+                <Text className="text-ink text-sm">
+                  {inList ? STRINGS.inList : STRINGS.addList}
+                </Text>
               </Text>
             </Pressable>
           </View>
@@ -157,7 +165,8 @@ export default function DetailScreen({ route }: Props) {
             {data.description}
           </Text>
 
-          <SectionTitle>Cast</SectionTitle>
+          <SectionTitle>{STRINGS.cast}</SectionTitle>
+
           <View className="flex-row mb-6">
             {data.cast.map((m) => (
               <CastCard key={m.id} member={m} />
@@ -168,7 +177,7 @@ export default function DetailScreen({ route }: Props) {
         {/* More like this */}
         {related && related.length > 0 && (
           <View className="mb-8">
-            <SectionTitle>More like this</SectionTitle>
+            <SectionTitle>{STRINGS.moreLikeThis}</SectionTitle>
             <Carousel items={related} onPressItem={openDetail} />
           </View>
         )}

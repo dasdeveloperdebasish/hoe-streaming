@@ -9,6 +9,7 @@ import type { HomeStackParamList } from "@/navigation/types";
 import { COLORS } from "@/constants/theme";
 import { SearchResultRow } from "@/components/ui/SearchResultRow";
 import { EmptyState } from "@/components/feedback/EmptyState";
+import { STRINGS } from "@/constants/strings";
 
 type Nav = NativeStackNavigationProp<HomeStackParamList>;
 
@@ -49,7 +50,7 @@ export default function SearchScreen() {
         <TextInput
           value={query}
           onChangeText={setQuery}
-          placeholder="Search shows, movies, genres"
+          placeholder={STRINGS.searchPlaceholder}
           placeholderTextColor={COLORS.muted}
           className="bg-surface text-ink px-4 py-3 rounded-lg"
           autoCorrect={false}
@@ -59,12 +60,12 @@ export default function SearchScreen() {
 
       {trimmed.length === 0 ? (
         <EmptyState
-          title="Find something to watch"
-          message="Search by title or genre."
+          title={STRINGS.searchPrompt}
+          message={STRINGS.searchPromptHint}
         />
       ) : showEmpty ? (
         <EmptyState
-          title="No results"
+          title={STRINGS.noResultsTitle}
           message={`Nothing found for "${trimmed}".`}
         />
       ) : (

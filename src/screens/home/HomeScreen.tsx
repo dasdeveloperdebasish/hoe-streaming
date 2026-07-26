@@ -14,6 +14,7 @@ import { HomeSkeleton } from "@/components/feedback/HomeSkeleton";
 import { ErrorState } from "@/components/feedback/ErrorState";
 import { EmptyState } from "@/components/feedback/EmptyState";
 import { COLORS } from "@/constants/theme";
+import { STRINGS } from "@/constants/strings";
 
 type Nav = NativeStackNavigationProp<HomeStackParamList, "HomeFeed">;
 
@@ -106,8 +107,8 @@ export default function HomeScreen() {
         ListHeaderComponent={ListHeader}
         ListEmptyComponent={
           <EmptyState
-            title="Nothing here yet"
-            message="No shows in this category."
+            title={STRINGS.homeEmptyTitle}
+            message={STRINGS.homeEmptyMessage}
           />
         }
       />

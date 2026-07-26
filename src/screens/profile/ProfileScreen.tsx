@@ -1,20 +1,22 @@
 import { ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useThemeStore } from "@/store/useThemeStore";
 import { useWatchlistStore } from "@/store/useWatchlistStore";
 import { CONTENT } from "@/data/content";
 import { SettingsRow } from "@/components/ui/SettingsRow";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Poster } from "@/components/ui/Poster";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { HomeStackParamList } from "@/navigation/types";
-import { useNavigation } from "@react-navigation/native";
+import type { HomeStackParamList } from "@/navigation/types";
+import { STRINGS } from "@/constants/strings";
 
 const USER = {
   name: "Debasish Das",
   initials: "DD",
   email: "debasish@example.com",
 };
+
 type Nav = NativeStackNavigationProp<HomeStackParamList>;
 
 export default function ProfileScreen() {
@@ -41,13 +43,13 @@ export default function ProfileScreen() {
           <Text className="text-ink text-lg font-medium mt-3">{USER.name}</Text>
           <Text className="text-muted text-sm mt-1">{USER.email}</Text>
           <Text className="text-accent text-xs mt-2">
-            {savedShows.length} in your list
+            {STRINGS.inYourList(savedShows.length)}
           </Text>
         </View>
 
         {/* My List */}
         <View className="mt-6">
-          <SectionTitle>My List</SectionTitle>
+          <SectionTitle>{STRINGS.myListSection}</SectionTitle>
           {savedShows.length > 0 ? (
             <ScrollView
               horizontal
@@ -71,7 +73,7 @@ export default function ProfileScreen() {
           ) : (
             <View className="px-4 py-8">
               <Text className="text-muted text-sm text-center">
-                Shows you save will appear here.
+                {STRINGS.watchlistEmpty}
               </Text>
             </View>
           )}
@@ -79,15 +81,15 @@ export default function ProfileScreen() {
 
         {/* Preferences */}
         <View className="mt-6">
-          <SectionTitle>Preferences</SectionTitle>
+          <SectionTitle>{STRINGS.preferences}</SectionTitle>
           <SettingsRow
-            label="Dark mode"
+            label={STRINGS.darkMode}
             isSwitch
             switchValue={mode === "dark"}
             onSwitchChange={toggleTheme}
           />
-          <SettingsRow label="Language" value="English" />
-          <SettingsRow label="Download quality" value="High" />
+          <SettingsRow label={STRINGS.language} value="English" />
+          <SettingsRow label={STRINGS.downloadQuality} value="High" />
         </View>
 
         <View className="h-8" />
