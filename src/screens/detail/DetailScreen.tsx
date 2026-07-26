@@ -6,6 +6,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useContentDetail, useRelatedContent } from "@/hooks/useContentDetail";
+import { useWatchlistStore } from "@/store/useWatchlistStore";
 import type { Content } from "@/types/content";
 import type { HomeStackParamList } from "@/navigation/types";
 import { COLORS } from "@/constants/theme";
@@ -29,7 +30,13 @@ export default function DetailScreen({ route }: Props) {
   const { data, isLoading, isError, refetch } = useContentDetail(id);
   const { data: related } = useRelatedContent(data?.relatedIds ?? []);
 
-  // Drives the header shrink/fade as the user scrolls.
+  // Watchlist (Zustand) — shared with the Profile count.
+  const inList = useWatchlistStore((s) =>
+    data ? s.ids.includes(data.id) : false,
+  );
+  const toggleList = useWatchlistStore((s) => s.toggle);
+
+  // Drives the header fade as the user scrolls.
   const scrollY = useMemo(() => new Animated.Value(0), []);
 
   const openDetail = useCallback(
@@ -41,12 +48,6 @@ export default function DetailScreen({ route }: Props) {
   if (isLoading) return <DetailSkeleton />;
   if (isError || !data) return <ErrorState onRetry={refetch} />;
 
-  // Image scales up as you pull down, fades slightly as you scroll up.
-  const imageScale = scrollY.interpolate({
-    inputRange: [-200, 0],
-    outputRange: [1.4, 1],
-    extrapolateRight: "clamp",
-  });
   const imageOpacity = scrollY.interpolate({
     inputRange: [0, HEADER_HEIGHT - 100],
     outputRange: [1, 0.3],
@@ -64,7 +65,6 @@ export default function DetailScreen({ route }: Props) {
           left: 16,
           zIndex: 10,
         }}
-        className="w-9 h-9 rounded-full items-center justify-center"
         hitSlop={8}
       >
         <View className="w-9 h-9 rounded-full bg-bg/60 items-center justify-center">
@@ -92,11 +92,7 @@ export default function DetailScreen({ route }: Props) {
         >
           <Animated.Image
             source={{ uri: data.backdropUrl }}
-            style={{
-              width: "100%",
-              height: HEADER_HEIGHT,
-              transform: [{ scale: imageScale }],
-            }}
+            style={{ width: "100%", height: HEADER_HEIGHT }}
           />
           <LinearGradient
             colors={["transparent", COLORS.bg]}
@@ -135,6 +131,7 @@ export default function DetailScreen({ route }: Props) {
             >
               <Text className="text-bg text-sm font-semibold">▶ Play</Text>
             </Pressable>
+
             <Pressable
               onPress={() =>
                 navigation.push("WebContent", {
@@ -144,10 +141,16 @@ export default function DetailScreen({ route }: Props) {
               }
               className="border border-line px-4 py-2.5 rounded-lg items-center justify-center"
             >
-              <Text className="text-ink text-sm">ⓘ More info</Text>
+              <Text className="text-ink text-sm">ⓘ Info</Text>
             </Pressable>
-            <Pressable className="border border-line px-4 py-2.5 rounded-lg items-center justify-center">
-              <Text className="text-ink text-sm">+ My List</Text>
+
+            <Pressable
+              onPress={() => toggleList(data.id)}
+              className="border border-line px-4 py-2.5 rounded-lg items-center justify-center"
+            >
+              <Text className="text-ink text-sm">
+                {inList ? "✓  List" : "+  List"}
+              </Text>
             </Pressable>
           </View>
 
@@ -163,7 +166,7 @@ export default function DetailScreen({ route }: Props) {
           </View>
         </View>
 
-        {/* More like this — full-width carousel */}
+        {/* More like this */}
         {related && related.length > 0 && (
           <View className="mb-8">
             <SectionTitle>More like this</SectionTitle>
