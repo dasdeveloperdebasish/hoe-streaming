@@ -8,6 +8,8 @@ import { STRINGS } from "@/constants/strings";
 
 type Props = { item: Content; onPress: () => void };
 
+const BLUR = "L6PZfSi_.AyE_3t7t7R**0o#DgR4";
+
 export function HeroBanner({ item, onPress }: Props) {
   const inList = useWatchlistStore((s) => s.ids.includes(item.id));
   const toggleList = useWatchlistStore((s) => s.toggle);
@@ -17,8 +19,10 @@ export function HeroBanner({ item, onPress }: Props) {
       <View>
         <Image
           source={item.backdropUrl}
+          placeholder={{ blurhash: BLUR }}
           contentFit="cover"
-          transition={200}
+          transition={150}
+          cachePolicy="memory-disk"
           style={{
             width: "100%",
             height: HERO_HEIGHT,

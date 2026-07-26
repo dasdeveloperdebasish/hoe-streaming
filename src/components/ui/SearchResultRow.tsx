@@ -6,13 +6,18 @@ import { COLORS } from "@/constants/theme";
 
 type Props = { item: Content; onPress: () => void };
 
+const BLUR = "L6PZfSi_.AyE_3t7t7R**0o#DgR4";
+
 function SearchResultRowBase({ item, onPress }: Props) {
   return (
     <Pressable onPress={onPress} className="flex-row px-4 py-2.5 items-center">
       <Image
         source={item.posterUrl}
+        placeholder={{ blurhash: BLUR }}
         contentFit="cover"
-        transition={200}
+        transition={150}
+        cachePolicy="memory-disk"
+        recyclingKey={item.id}
         style={{
           width: 56,
           height: 84,

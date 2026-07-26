@@ -16,7 +16,8 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.dasdeveloperdebasish.hoestreaming"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -24,6 +25,11 @@
     "plugins": [
       "expo-image",
       "expo-video"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cb6998fb-d650-48d2-8077-c9d5b8490a2d"
+      }
+    }
   }
 }

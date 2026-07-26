@@ -10,6 +10,8 @@ import { queryClient } from "@/services/queryClient";
 import { useThemeStore } from "@/store/useThemeStore";
 import { COLORS } from "@/constants/theme";
 import RootTabs from "@/navigation/RootTabs";
+import { CONTENT } from "@/data/content";
+import { Image } from "expo-image";
 
 // Theme Paper's Material palette to match our custom dark tokens.
 const paperTheme = {
@@ -30,6 +32,12 @@ export default function App() {
   useEffect(() => {
     setColorScheme(mode);
   }, [mode, setColorScheme]);
+
+  useEffect(() => {
+    // Warm the cache with poster images so they appear instantly.
+    const urls = Object.values(CONTENT).map((c) => c.posterUrl);
+    Image.prefetch(urls, { cachePolicy: "memory-disk" });
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

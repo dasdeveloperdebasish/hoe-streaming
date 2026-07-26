@@ -52,7 +52,8 @@ export default function SearchScreen() {
           onChangeText={setQuery}
           placeholder={STRINGS.searchPlaceholder}
           placeholderTextColor={COLORS.muted}
-          className="bg-surface text-ink px-4 py-3 rounded-lg"
+          className="bg-surface text-ink rounded-lg"
+          style={{ paddingHorizontal: 16, paddingVertical: 12 }}
           autoCorrect={false}
           returnKeyType="search"
         />

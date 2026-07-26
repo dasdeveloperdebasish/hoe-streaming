@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Pressable, Text, View } from "react-native";
 import { Image } from "expo-image";
+import { COLORS } from "@/constants/theme";
 
 type Props = {
   title: string;
@@ -23,14 +24,16 @@ function PosterBase({
     <Pressable onPress={onPress} className="mr-3" style={{ width }}>
       <Image
         source={posterUrl}
-        placeholder={BLUR}
+        placeholder={{ blurhash: BLUR }}
         contentFit="cover"
-        transition={200}
+        transition={150}
+        cachePolicy="memory-disk"
+        recyclingKey={posterUrl}
         style={{
           width,
           height: width * 1.5,
           borderRadius: 8,
-          backgroundColor: "#16161A",
+          backgroundColor: COLORS.surface,
         }}
       />
       {progress !== undefined && (

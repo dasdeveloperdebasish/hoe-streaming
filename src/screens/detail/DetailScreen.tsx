@@ -2,6 +2,7 @@ import { useCallback, useMemo } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import type { CompositeNavigationProp } from "@react-navigation/native";
 import type {
   NativeStackScreenProps,
   NativeStackNavigationProp,
@@ -10,7 +11,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useContentDetail, useRelatedContent } from "@/hooks/useContentDetail";
 import { useWatchlistStore } from "@/store/useWatchlistStore";
 import type { Content } from "@/types/content";
-import type { HomeStackParamList } from "@/navigation/types";
+import type {
+  HomeStackParamList,
+  RootStackParamList,
+} from "@/navigation/types";
 import { COLORS } from "@/constants/theme";
 import { Tag } from "@/components/ui/Tag";
 import { CastCard } from "@/components/ui/CastCard";
@@ -21,7 +25,11 @@ import { ErrorState } from "@/components/feedback/ErrorState";
 import { STRINGS } from "@/constants/strings";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "Detail">;
-type Nav = NativeStackNavigationProp<HomeStackParamList, "Detail">;
+
+type Nav = CompositeNavigationProp<
+  NativeStackNavigationProp<HomeStackParamList, "Detail">,
+  NativeStackNavigationProp<RootStackParamList>
+>;
 
 const HEADER_HEIGHT = 360;
 
@@ -95,7 +103,11 @@ export default function DetailScreen({ route }: Props) {
         >
           <Animated.Image
             source={{ uri: data.backdropUrl }}
-            style={{ width: "100%", height: HEADER_HEIGHT }}
+            style={{
+              width: "100%",
+              height: HEADER_HEIGHT,
+              backgroundColor: COLORS.surface,
+            }}
           />
           <LinearGradient
             colors={["transparent", COLORS.bg]}
@@ -125,7 +137,7 @@ export default function DetailScreen({ route }: Props) {
           <View className="flex-row gap-2 mt-2 mb-6">
             <Pressable
               onPress={() =>
-                navigation.push("Player", {
+                navigation.navigate("Player", {
                   videoUrl: data.videoUrl,
                   title: data.title,
                 })
@@ -154,9 +166,7 @@ export default function DetailScreen({ route }: Props) {
               className="border border-line px-4 py-2.5 rounded-lg items-center justify-center"
             >
               <Text className="text-ink text-sm">
-                <Text className="text-ink text-sm">
-                  {inList ? STRINGS.inList : STRINGS.addList}
-                </Text>
+                {inList ? STRINGS.inList : STRINGS.addList}
               </Text>
             </Pressable>
           </View>

@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  ActivityIndicator,
-  Dimensions,
-  Pressable,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, Dimensions, Pressable, View } from "react-native";
 import { VideoView, useVideoPlayer } from "expo-video";
-import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import type {
   NativeStackScreenProps,
@@ -16,29 +9,28 @@ import type {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import * as ScreenOrientation from "expo-screen-orientation";
-import type { HomeStackParamList } from "@/navigation/types";
+import type { RootStackParamList } from "@/navigation/types";
 import { COLORS } from "@/constants/theme";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "Player">;
-type Nav = NativeStackNavigationProp<HomeStackParamList, "Player">;
+type Props = NativeStackScreenProps<RootStackParamList, "Player">;
+type Nav = NativeStackNavigationProp<RootStackParamList, "Player">;
 
 const { width } = Dimensions.get("window");
-const VIDEO_HEIGHT = width * (9 / 16); // 16:9 aspect ratio
+const VIDEO_HEIGHT = width * (9 / 16);
 
 export default function PlayerScreen({ route }: Props) {
-  const { videoUrl, title } = route.params;
+  const { videoUrl } = route.params;
   const navigation = useNavigation<Nav>();
   const insets = useSafeAreaInsets();
   const [loading, setLoading] = useState(true);
   const videoRef = useRef<VideoView>(null);
 
-  // Create a player bound to this show's video; autoplay on mount.
   const player = useVideoPlayer(videoUrl, (p) => {
     p.loop = false;
     p.play();
   });
 
-  // Hide the spinner once the video is ready to play.
+  // Hide spinner when ready.
   useEffect(() => {
     const sub = player.addListener("statusChange", ({ status }) => {
       if (status === "readyToPlay") setLoading(false);
@@ -46,7 +38,7 @@ export default function PlayerScreen({ route }: Props) {
     return () => sub.remove();
   }, [player]);
 
-  // Allow landscape on this screen; restore portrait on exit.
+  // Allow rotation while on the player; restore portrait on exit.
   useEffect(() => {
     ScreenOrientation.unlockAsync();
     return () => {
@@ -56,11 +48,9 @@ export default function PlayerScreen({ route }: Props) {
     };
   }, []);
 
-  const goFullscreen = () => videoRef.current?.enterFullscreen();
-
   return (
     <View className="flex-1 bg-black">
-      {/* Back button, floating over the top */}
+      {/* Dismiss button */}
       <Pressable
         onPress={() => navigation.goBack()}
         hitSlop={12}
@@ -75,37 +65,19 @@ export default function PlayerScreen({ route }: Props) {
         <Ionicons name="chevron-down" size={22} color={COLORS.ink} />
       </Pressable>
 
-      {/* Video centered vertically, full width */}
       <View className="flex-1 justify-center">
-        <View style={{ width, height: VIDEO_HEIGHT, backgroundColor: "#000" }}>
-          <VideoView
-            ref={videoRef}
-            player={player}
-            style={{ width, height: VIDEO_HEIGHT }}
-            contentFit="contain"
-            nativeControls
-          />
-          {loading && (
-            <View className="absolute inset-0 items-center justify-center">
-              <ActivityIndicator color={COLORS.accent} size="large" />
-            </View>
-          )}
-        </View>
-
-        {/* Title + Paper fullscreen button */}
-        <View className="px-5 mt-6">
-          <Text className="text-ink text-xl font-semibold">{title}</Text>
-          <Button
-            mode="contained"
-            icon="fullscreen"
-            onPress={goFullscreen}
-            buttonColor={COLORS.surface}
-            textColor={COLORS.ink}
-            style={{ marginTop: 16, alignSelf: "flex-start" }}
-          >
-            Fullscreen
-          </Button>
-        </View>
+        <VideoView
+          ref={videoRef}
+          player={player}
+          style={{ width, height: VIDEO_HEIGHT }}
+          contentFit="contain"
+          nativeControls
+        />
+        {loading && (
+          <View className="absolute inset-0 items-center justify-center">
+            <ActivityIndicator color={COLORS.accent} size="large" />
+          </View>
+        )}
       </View>
     </View>
   );

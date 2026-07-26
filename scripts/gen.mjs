@@ -63,8 +63,8 @@ titles.forEach((title, i) => {
     rating: ratings[i % ratings.length],
     durationLabel: durations[i % durations.length],
     genres: g,
-    posterUrl: `https://picsum.photos/seed/${id}/300/450`,
-    backdropUrl: `https://picsum.photos/seed/${id}b/800/450`,
+    posterUrl: `https://picsum.photos/seed/${id}/200/300`,
+    backdropUrl: `https://picsum.photos/seed/${id}b/800/500`,
     videoUrl: videos[i % videos.length],
     description: `${title} follows a small group whose ordinary lives crack open when one decision pulls them somewhere they can't return from.`,
     cast: [1, 2, 3].map((n) => ({
