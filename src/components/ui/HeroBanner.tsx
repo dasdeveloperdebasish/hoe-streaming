@@ -58,9 +58,7 @@ export function HeroBanner({ item, onPress }: Props) {
             className="border border-line px-4 py-2.5 rounded-lg"
           >
             <Text className="text-ink text-sm">
-              <Text className="text-ink text-sm">
-                {inList ? STRINGS.inList : STRINGS.addList}
-              </Text>
+              {inList ? STRINGS.inList : STRINGS.addList}
             </Text>
           </Pressable>
         </View>
