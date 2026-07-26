@@ -2,8 +2,11 @@ import { ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useThemeStore } from "@/store/useThemeStore";
 import { useWatchlistStore } from "@/store/useWatchlistStore";
+import { CONTENT } from "@/data/content";
 import { SettingsRow } from "@/components/ui/SettingsRow";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { Poster } from "@/components/ui/Poster";
+import { EmptyState } from "@/components/feedback/EmptyState";
 
 const USER = {
   name: "Debasish Das",
@@ -15,7 +18,11 @@ export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const mode = useThemeStore((s) => s.mode);
   const toggleTheme = useThemeStore((s) => s.toggle);
-  const watchlistCount = useWatchlistStore((s) => s.ids.length);
+
+  const watchlistIds = useWatchlistStore((s) => s.ids);
+  const savedShows = watchlistIds
+    .map((id) => CONTENT[id])
+    .filter((x) => x !== undefined);
 
   return (
     <View className="flex-1 bg-bg" style={{ paddingTop: insets.top }}>
@@ -30,8 +37,35 @@ export default function ProfileScreen() {
           <Text className="text-ink text-lg font-medium mt-3">{USER.name}</Text>
           <Text className="text-muted text-sm mt-1">{USER.email}</Text>
           <Text className="text-accent text-xs mt-2">
-            {watchlistCount} in your list
+            {savedShows.length} in your list
           </Text>
+        </View>
+
+        {/* My List */}
+        <View className="mt-6">
+          <SectionTitle>My List</SectionTitle>
+          {savedShows.length > 0 ? (
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 16 }}
+            >
+              {savedShows.map((show) => (
+                <Poster
+                  key={show.id}
+                  title={show.title}
+                  posterUrl={show.posterUrl}
+                  onPress={() => {}}
+                />
+              ))}
+            </ScrollView>
+          ) : (
+            <View className="px-4 py-8">
+              <Text className="text-muted text-sm text-center">
+                Shows you save will appear here.
+              </Text>
+            </View>
+          )}
         </View>
 
         {/* Preferences */}
