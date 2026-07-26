@@ -6,7 +6,7 @@ const categories: Category[] = [
   { id: "action", label: "Action" },
   { id: "drama", label: "Drama" },
   { id: "comedy", label: "Comedy" },
-  { id: "docs", label: "Documentary" },
+  { id: "documentary", label: "Documentary" },
 ];
 
 const ids = Object.keys(CONTENT);
