@@ -5,15 +5,10 @@
     "jsx": "react-native",
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
+    "types": ["jest"],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "nativewind-env.d.ts"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "nativewind-env.d.ts"]
 }
