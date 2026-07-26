@@ -5,7 +5,7 @@ built with Expo and TypeScript. It features a content-rich home feed, a rich
 detail view with a scroll-driven animated header, search with infinite scroll, a
 profile with a working watchlist, video playback, and a WebView integration.
 
-> Built for the House of Edtech React Native (Expo) Advanced UI Clone assignment.
+> > A React Native (Expo) streaming UI built as a technical assignment.
 
 ---
 
