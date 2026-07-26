@@ -33,9 +33,9 @@ export default function App() {
   }, [mode, setColorScheme]);
 
   useEffect(() => {
-    // Warm the cache with poster images so they appear instantly.
-    const urls = Object.values(CONTENT).map((c) => c.posterUrl);
-    Image.prefetch(urls, { cachePolicy: "memory-disk" });
+    const posters = Object.values(CONTENT).map((c) => c.posterUrl);
+    const backdrops = Object.values(CONTENT).map((c) => c.backdropUrl);
+    Image.prefetch([...posters, ...backdrops], { cachePolicy: "memory-disk" });
   }, []);
 
   return (

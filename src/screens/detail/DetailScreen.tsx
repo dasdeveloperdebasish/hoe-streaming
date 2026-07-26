@@ -99,6 +99,7 @@ export default function DetailScreen({ route }: Props) {
             height: HEADER_HEIGHT,
             opacity: imageOpacity,
             overflow: "hidden",
+            backgroundColor: COLORS.surface,
           }}
         >
           <Animated.Image
