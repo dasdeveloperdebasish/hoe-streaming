@@ -4,7 +4,7 @@ import type { RootTabParamList } from "./types";
 import { COLORS } from "@/constants/theme";
 import HomeStack from "./HomeStack";
 import SearchStack from "./SearchStack";
-import ProfileScreen from "@/screens/profile/ProfileScreen";
+import ProfileStack from "./ProfileStack";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -32,7 +32,7 @@ export default function RootTabs() {
     >
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Search" component={SearchStack} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={ProfileStack} />
     </Tab.Navigator>
   );
 }

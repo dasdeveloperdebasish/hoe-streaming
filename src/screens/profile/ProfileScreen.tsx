@@ -6,15 +6,19 @@ import { CONTENT } from "@/data/content";
 import { SettingsRow } from "@/components/ui/SettingsRow";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Poster } from "@/components/ui/Poster";
-import { EmptyState } from "@/components/feedback/EmptyState";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { HomeStackParamList } from "@/navigation/types";
+import { useNavigation } from "@react-navigation/native";
 
 const USER = {
   name: "Debasish Das",
   initials: "DD",
   email: "debasish@example.com",
 };
+type Nav = NativeStackNavigationProp<HomeStackParamList>;
 
 export default function ProfileScreen() {
+  const navigation = useNavigation<Nav>();
   const insets = useSafeAreaInsets();
   const mode = useThemeStore((s) => s.mode);
   const toggleTheme = useThemeStore((s) => s.toggle);
@@ -55,7 +59,12 @@ export default function ProfileScreen() {
                   key={show.id}
                   title={show.title}
                   posterUrl={show.posterUrl}
-                  onPress={() => {}}
+                  onPress={() =>
+                    navigation.navigate("Detail", {
+                      id: show.id,
+                      title: show.title,
+                    })
+                  }
                 />
               ))}
             </ScrollView>
@@ -79,15 +88,6 @@ export default function ProfileScreen() {
           />
           <SettingsRow label="Language" value="English" />
           <SettingsRow label="Download quality" value="High" />
-          <SettingsRow label="Notifications" />
-        </View>
-
-        {/* Account */}
-        <View className="mt-6">
-          <SectionTitle>Account</SectionTitle>
-          <SettingsRow label="Manage devices" />
-          <SettingsRow label="Privacy" />
-          <SettingsRow label="Log out" />
         </View>
 
         <View className="h-8" />

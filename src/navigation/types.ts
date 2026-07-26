@@ -6,9 +6,9 @@ export type HomeStackParamList = {
   Detail: { id: string; title: string };
   WebContent: { url: string; title: string };
   Player: { videoUrl: string; title: string };
+  ProfileHome: undefined;
 };
 
-// The three bottom tabs.
 export type RootTabParamList = {
   Home: NavigatorScreenParams<HomeStackParamList>;
   Search: undefined;
