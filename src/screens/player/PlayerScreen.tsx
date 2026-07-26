@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Dimensions, Pressable, View } from "react-native";
+import {
+  ActivityIndicator,
+  Pressable,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { VideoView, useVideoPlayer } from "expo-video";
 import { useNavigation } from "@react-navigation/native";
 import type {
@@ -15,9 +20,6 @@ import { COLORS } from "@/constants/theme";
 type Props = NativeStackScreenProps<RootStackParamList, "Player">;
 type Nav = NativeStackNavigationProp<RootStackParamList, "Player">;
 
-const { width } = Dimensions.get("window");
-const VIDEO_HEIGHT = width * (9 / 16);
-
 export default function PlayerScreen({ route }: Props) {
   const { videoUrl } = route.params;
   const navigation = useNavigation<Nav>();
@@ -25,12 +27,14 @@ export default function PlayerScreen({ route }: Props) {
   const [loading, setLoading] = useState(true);
   const videoRef = useRef<VideoView>(null);
 
+  const { width } = useWindowDimensions();
+  const videoHeight = width * (9 / 16);
+
   const player = useVideoPlayer(videoUrl, (p) => {
     p.loop = false;
     p.play();
   });
 
-  // Hide spinner when ready.
   useEffect(() => {
     const sub = player.addListener("statusChange", ({ status }) => {
       if (status === "readyToPlay") setLoading(false);
@@ -38,9 +42,7 @@ export default function PlayerScreen({ route }: Props) {
     return () => sub.remove();
   }, [player]);
 
-  // Allow rotation while on the player; restore portrait on exit.
   useEffect(() => {
-    ScreenOrientation.unlockAsync();
     return () => {
       ScreenOrientation.lockAsync(
         ScreenOrientation.OrientationLock.PORTRAIT_UP,
@@ -48,9 +50,16 @@ export default function PlayerScreen({ route }: Props) {
     };
   }, []);
 
+  const handleFullscreenEnter = () => {
+    ScreenOrientation.unlockAsync();
+  };
+
+  const handleFullscreenExit = () => {
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+  };
+
   return (
     <View className="flex-1 bg-black">
-      {/* Dismiss button */}
       <Pressable
         onPress={() => navigation.goBack()}
         hitSlop={12}
@@ -69,9 +78,11 @@ export default function PlayerScreen({ route }: Props) {
         <VideoView
           ref={videoRef}
           player={player}
-          style={{ width, height: VIDEO_HEIGHT }}
+          style={{ width, height: videoHeight }}
           contentFit="contain"
           nativeControls
+          onFullscreenEnter={handleFullscreenEnter}
+          onFullscreenExit={handleFullscreenExit}
         />
         {loading && (
           <View className="absolute inset-0 items-center justify-center">
