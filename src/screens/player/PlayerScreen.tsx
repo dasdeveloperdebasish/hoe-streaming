@@ -7,13 +7,17 @@ import {
   View,
 } from "react-native";
 import { VideoView, useVideoPlayer } from "expo-video";
+import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackScreenProps , NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type {
+  NativeStackScreenProps,
+  NativeStackNavigationProp,
+} from "@react-navigation/native-stack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import * as ScreenOrientation from "expo-screen-orientation";
 import type { HomeStackParamList } from "@/navigation/types";
 import { COLORS } from "@/constants/theme";
-import * as ScreenOrientation from "expo-screen-orientation";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "Player">;
 type Nav = NativeStackNavigationProp<HomeStackParamList, "Player">;
@@ -42,8 +46,9 @@ export default function PlayerScreen({ route }: Props) {
     return () => sub.remove();
   }, [player]);
 
+  // Allow landscape on this screen; restore portrait on exit.
   useEffect(() => {
-    ScreenOrientation.unlockAsync(); // allow landscape on this screen
+    ScreenOrientation.unlockAsync();
     return () => {
       ScreenOrientation.lockAsync(
         ScreenOrientation.OrientationLock.PORTRAIT_UP,
@@ -87,17 +92,19 @@ export default function PlayerScreen({ route }: Props) {
           )}
         </View>
 
-        {/* Title + fullscreen button below the video */}
+        {/* Title + Paper fullscreen button */}
         <View className="px-5 mt-6">
           <Text className="text-ink text-xl font-semibold">{title}</Text>
-
-          <Pressable
+          <Button
+            mode="contained"
+            icon="fullscreen"
             onPress={goFullscreen}
-            className="flex-row items-center mt-4 bg-surface self-start px-4 py-2.5 rounded-lg"
+            buttonColor={COLORS.surface}
+            textColor={COLORS.ink}
+            style={{ marginTop: 16, alignSelf: "flex-start" }}
           >
-            <Ionicons name="expand" size={16} color={COLORS.ink} />
-            <Text className="text-ink text-sm ml-2">Fullscreen</Text>
-          </Pressable>
+            Fullscreen
+          </Button>
         </View>
       </View>
     </View>

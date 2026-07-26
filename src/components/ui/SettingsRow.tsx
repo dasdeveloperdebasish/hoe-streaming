@@ -1,4 +1,5 @@
-import { Pressable, Switch, Text } from "react-native";
+import { Pressable, Text } from "react-native";
+import { Switch } from "react-native-paper";
 import { COLORS } from "@/constants/theme";
 
 type Props = {
@@ -28,8 +29,7 @@ export function SettingsRow({
         <Switch
           value={switchValue}
           onValueChange={onSwitchChange}
-          trackColor={{ false: COLORS.line, true: COLORS.accent }}
-          thumbColor={COLORS.ink}
+          color={COLORS.accent}
         />
       ) : (
         <Text className="text-muted text-sm">{value ?? "›"}</Text>
