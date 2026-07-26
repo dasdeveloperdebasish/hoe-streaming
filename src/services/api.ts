@@ -41,6 +41,14 @@ export async function fetchContentById(id: string): Promise<ContentDetail> {
   }
   return item;
 }
+export async function fetchContentByIds(
+  ids: string[],
+): Promise<ContentDetail[]> {
+  await wait(LATENCY_MS);
+  return ids
+    .map((id) => CONTENT[id])
+    .filter((item): item is ContentDetail => item !== undefined);
+}
 
 export async function searchContent(
   query: string,
