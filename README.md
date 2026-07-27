@@ -223,7 +223,7 @@ A deeper decision log lives in [`NOTES.md`](./NOTES.md).
 - ✅ Infinite-scroll pagination
 - ✅ Theme toggle wired to the color-scheme system (dark-first; full light palette
   is a documented next step)
-- ⬜ Jest tests (skipped to keep the core polished within the deadline)
+- ✅ Jest tests (skipped to keep the core polished within the deadline)
 
 ---
 
